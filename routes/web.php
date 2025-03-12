@@ -23,6 +23,13 @@ use App\Http\Controllers\TamuController;
 use App\Http\Controllers\UserController;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+
+
+Route::get('/run-storage-link', function () {
+    Artisan::call('storage:link');
+    return "Storage link has been created!";
+});
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', [HomeController::class, 'index']);
