@@ -6,7 +6,7 @@
                     <div class="single-widget pr-60">
                         <div class="footer-logo pb-25">
                             <a href="index.html"><img
-                                    src="{{ asset($setting->logo ? 'storage/' . $setting->logo : 'eduhome/img/logo/2.png') }}"
+                                    src="{{ asset($setting->logo ? 'uploads/' . $setting->logo : 'eduhome/img/logo/2.png') }}"
                                     alt="eduhome"></a>
                         </div>
                         <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was
@@ -54,7 +54,7 @@
                         <h3>get in touch</h3>
                         <p>{{ $setting->address ??
                             'Jalan Raya Semenep Kel Mugarsari - Kec Tamansarai Kota
-                                                                                                                            Tasikmalaya' }}
+                                                                                                                                                    Tasikmalaya' }}
                         </p>
                         <p>{{ $setting->phone_1 ?? '+857 223 019 74' }}<br>{{ $setting->phone_2 ?? '+857 223 019 74' }}
                         </p>

@@ -98,7 +98,7 @@
                         data: 'gambar',
                         name: 'gambar',
                         render: function(data, type, row) {
-                            return `<img src="storage/${row.gambar}" alt="Gambar" width="100" height="100">`;
+                            return `<img src="uploads/${row.gambar}" alt="Gambar" width="100" height="100">`;
                         }
                     },
                     {
@@ -132,8 +132,8 @@
             $('#modal-title').text("Tambah Data");
             $('#modal-form').modal('show');
             // url action to update
-            let url = `{{ route('gambar-lomba.update', 'id') }}`
-            $('#myForm').attr('action', url.replace('id', id));
+            let url = `{{ route('gambar-lomba.update', 'ids') }}`
+            $('#myForm').attr('action', url.replace('ids', id));
             $('#myForm').data('type', 'edit');
 
             $.ajax({

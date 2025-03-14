@@ -65,7 +65,7 @@
                                     <div class="single-blog mb-60">
                                         <div class="blog-img" style="width: 365px; height: 246px; overflow: hidden;">
                                             <a href="{{ route('berita.detail', $item->slug) }}"><img
-                                                    src="{{ asset('storage/' . $item->image) }}"
+                                                    src="{{ asset('uploads/' . $item->image) }}"
                                                     style="width: 100%; height: 100%; object-fit: cover;"
                                                     alt="blog"></a>
                                             <div class="blog-hover">

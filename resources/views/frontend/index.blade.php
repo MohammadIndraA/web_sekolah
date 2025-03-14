@@ -7,7 +7,7 @@
             <!-- Start Slingle Slide -->
             @foreach ($banners as $item)
                 <div class="single-slide item"
-                    style="background-image: url('{{ asset($item->image ? 'storage/' . $item->image : 'eduhome/img/slider/slider1.jpg') }}');">
+                    style="background-image: url('{{ asset($item->image ? 'uploads/' . $item->image : 'eduhome/img/slider/slider1.jpg') }}');">
                     <!-- Start Slider Content -->
                     <div class="slider-content-area">
                         <div class="container">
@@ -110,7 +110,8 @@
                     <div class="col-md-4 hidden-sm col-xs-12">
                         <div class="single-course">
                             <div class="course-img">
-                                <a href="/event"><img src="{{ asset('storage/' . $item->image) }}" alt="course">
+                                <a href="/event"><img src="{{ asset('uploads/' . $item->image) }}" alt="course"
+                                        style="height: 400px">
                                     <div class="course-hover">
                                         <i class="fa fa-link"></i>
                                     </div>
@@ -145,7 +146,7 @@
                         <div class="single-event mb-35">
                             <div class="event-img" style="width: 214px; height: 195px; overflow: hidden;">
                                 <a href="/event">
-                                    <img src="{{ asset('storage/' . $item->image) }}" alt="event"
+                                    <img src="{{ asset('uploads/' . $item->image) }}" alt="event"
                                         style="width: 100%; height: 100%; object-fit: cover;">
                                 </a>
                             </div>
@@ -200,7 +201,7 @@
                         <div class="col-md-8 col-md-offset-2 col-sm-12">
                             <div class="single-testimonial">
                                 <div class="course-img" size="cover">
-                                    <a href="/event"><img src="{{ asset('storage/' . $item->gambar) }}" alt="course">
+                                    <a href="/event"><img src="{{ asset('uploads/' . $item->gambar) }}" alt="course">
                                         <div class="course-hover">
                                             <i class="fa fa-link"></i>
                                         </div>

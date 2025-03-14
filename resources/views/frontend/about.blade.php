@@ -4,7 +4,7 @@
     <!-- Banner Area Start -->
     <div class="banner-area-wrapper">
         <div class="banner-area text-center"
-            style="background-image: url('{{ asset($about->banner ? 'storage/' . $about->banner : 'eduhome/img/slider/slider1.jpg') }}')">
+            style="background-image: url('{{ asset($about->banner ? 'uploads/' . $about->banner : 'eduhome/img/slider/slider1.jpg') }}')">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="about-img">
-                        <img src="{{ asset('storage/' . $about->thumbnail ?? 'eduhome/img/about/about.png') }}"
+                        <img src="{{ asset('uploads/' . $about->thumbnail ?? 'eduhome/img/about/about.png') }}"
                             alt="about">
                     </div>
                 </div>

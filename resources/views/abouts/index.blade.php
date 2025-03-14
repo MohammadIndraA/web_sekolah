@@ -88,10 +88,10 @@
                     <h5 class="mb-4 text-uppercase">Banner | Thumbnail</h5>
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $about->banner) }}" alt="Banner" class="img-fluid">
+                            <img src="{{ asset('uploads/' . $about->banner) }}" alt="Banner" class="img-fluid">
                         </div>
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $about->thumbnail) }}" alt="Thumbnail" class="img-fluid">
+                            <img src="{{ asset('uploads/' . $about->thumbnail) }}" alt="Thumbnail" class="img-fluid">
                         </div>
                     </div>
                 </div>

@@ -149,8 +149,8 @@
             $('#modal-title').text("Tambah Data User");
             $('#modal-form').modal('show');
             // url action to update
-            let url = `{{ route('user.update', 'id') }}`
-            $('#myForm').attr('action', url.replace('id', id));
+            let url = `{{ route('user.update', 'ids') }}`
+            $('#myForm').attr('action', url.replace('ids', id));
             $('#myForm').data('type', 'edit');
 
             $.ajax({

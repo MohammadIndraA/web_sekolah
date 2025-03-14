@@ -1,0 +1,80 @@
+password : MApkalhikmah123#!
+pw : W2345!jk
+email : admin@mapkalhikmahtasikmalaya.sch.id
+pw email : >iF^@C3Xu] 
+
+
+perubahan storage menjadi uplaoads
+
+nomor peserta jadi varcar ubah juga validasi
+
+
+
+
+gambar
+
+Buka config/filesystems.php.
+
+Tambahkan disk baru:
+
+php
+Copy
+'public_local' => [
+    'driver' => 'local',
+    'root' => public_path('uploads'), // Simpan file di public/uploads
+    'url' => env('APP_URL') . '/uploads',
+    'visibility' => 'public',
+],
+
+
+function uploadDokumen($directory, $file, $filename = "")
+{
+    $extensi = $file->getClientOriginalExtension();
+    $filename = "{$filename}_" . date('Ymdhis') . ".{$extensi}";
+
+    Storage::disk('public_local')->putFileAs("/$directory", $file, $filename);
+    return "/$directory/$filename";
+}
+
+
+
+
+mutiple image
+ // Store the file  
+            $fullPath = Storage::disk('public_local')->putFileAs("/$path", $image, $filename);
+
+
+
+redicet event home
+ return redirect('/')->with('success', 'Konfirmasi berhasil!');
+
+
+
+
+perubahan di update 
+ // url action to update
+            let url = `{{ route('user.update', 'ids') }}`
+            $('#myForm').attr('action', url.replace('ids', id));
+
+
+
+
+
+	LOKAL
+
+style di index fromt event
+ style="height: 400px"
+
+penambahan page siswa baru dan pindahan
+PEMBBUA TABEL SISWA BARU
+
+penambahn di header
+ <li><a href="#">PSB</a>
+                                        <ul>
+                                            <li><a href="/siswa-baru">PESERTA DIDIK BARU</a></li>
+                                            <li><a href="/siswa-pindahan">PESSERTA PINDAHAN</a></li>
+                                        </ul>
+                                    </li>
+
+
+

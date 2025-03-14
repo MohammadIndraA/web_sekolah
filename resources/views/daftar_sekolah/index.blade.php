@@ -158,8 +158,8 @@
             $('#modal-title').text("Tambah Data Sekolah");
             $('#modal-form').modal('show');
             // url action to update
-            let url = `{{ route('daftar-sekolah.update', 'id') }}`
-            $('#myForm').attr('action', url.replace('id', id));
+            let url = `{{ route('daftar-sekolah.update', 'ids') }}`
+            $('#myForm').attr('action', url.replace('ids', id));
             $('#myForm').data('type', 'edit');
 
             $.ajax({

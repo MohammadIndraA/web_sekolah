@@ -6,10 +6,12 @@ use App\Http\Requests\BeritaRequest;
 use App\Models\Berita;
 use App\Models\KategoriBerita;
 use App\Models\TagBerita;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class BeritaController extends Controller
 {
@@ -37,7 +39,7 @@ class BeritaController extends Controller
                     // Tambahkan tombol edit jika memiliki izin
                     // if (auth()->user()->can('edit-kategori-dokumen')) {
                         $editButton = '
-                            <button onclick="editFunc(`' . $row->id . '`)" class="btn btn-primary btn-flat btn-sm" title="Edit">
+                            <button onclick="editFunc(`' . $row->slug . '`)" class="btn btn-primary btn-flat btn-sm" title="Edit">
                                 <i class="dripicons-document-edit"></i>
                             </button>
                         ';
@@ -99,19 +101,62 @@ class BeritaController extends Controller
         }
     }
 
-    public function edit(Request $request)
+    public function show(Request $request, $slug)
     {
-            $berita = Berita::findOrFail($request->id);
+        $berita = Berita::where('slug', $request->slug)->first();
+        if (!$berita) {
+            return response()->json([
+                "status" => false,
+                "message" => "Data Berita Lomba tidak ditemukan",
+            ], 404);
+        }
         return response()->json([
             "status" => true,
             "data" => $berita,
-        ]);
+        ], 200);
     }
-
-    public function update(BeritaRequest $request, $id)
+    public function edit(Request $request)
     {
         try {
-            $berita = Berita::findOrFail($id);
+            // Cari data berita berdasarkan id
+            $berita = Berita::findOrFail($request->id);
+            if (!$berita) {
+                return response()->json([
+                    "status" => false,
+                    "message" => "Data berita tidak ditemukan.",
+                ], 404);
+            }
+            // Kembalikan respons JSON
+            return response()->json([
+                "status" => true,
+                "data" => $berita,
+            ]);
+        } catch (ValidationException $e) {
+            // Tangani error validasi
+            return response()->json([
+                "status" => false,
+                "message" => "Validasi gagal: " . $e->getMessage(),
+                "errors" => $e->errors(),
+            ], 422); // Kode status HTTP 422 untuk validasi gagal
+        } catch (ModelNotFoundException $e) {
+            // Tangani error jika data tidak ditemukan
+            return response()->json([
+                "status" => false,
+                "message" => "Data berita tidak ditemukan.",
+            ], 404); // Kode status HTTP 404 untuk data tidak ditemukan
+        } catch (Exception $e) {
+            // Tangani error umum
+            return response()->json([
+                "status" => false,
+                "message" => "Terjadi kesalahan: " . $e->getMessage(),
+            ], 500); // Kode status HTTP 500 untuk internal server error
+        }
+    }
+
+    public function update(BeritaRequest $request, $slug)
+    {
+        try {
+            $berita = Berita::where('slug', $slug)->first();
             $data = $request->validated();  
             if ($request->hasFile('image')) {
                 if (Storage::disk('public')->exists($berita->image)) {

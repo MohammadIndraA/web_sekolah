@@ -1,5 +1,5 @@
 @extends('frontend.layouts.main')
-@section('title', 'About')
+@section('title', $berita->title)
 @section('content')
     <!-- Blog Start -->
     <div class="blog-details-area pt-100 pb-100">
@@ -8,7 +8,7 @@
                 <div class="col-md-8">
                     <div class="blog-details">
                         <div class="blog-details-img" style="width: 100%; height: 50%; object-fit: cover; overflow: hidden;">
-                            <img src="{{ $berita->image ? asset('storage/' . $berita->image) : asset('img/blog/blog-detail.jpg') }}"
+                            <img src="{{ $berita->image ? asset('uploads/' . $berita->image) : asset('img/blog/blog-detail.jpg') }}"
                                 alt="blog-details" style="width: 100%; height: 100%; object-fit: cover; overflow: hidden;">
                         </div>
                         <div class="blog-details-content">

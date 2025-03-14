@@ -38,7 +38,7 @@ class EventHomeController extends Controller
             ]);
     
             // Redirect dengan pesan sukses
-            return redirect()->back()->with('success', 'Konfirmasi berhasil!');
+            return redirect('/')->with('success', 'Konfirmasi berhasil!');
         } catch (\Exception $e) {
             // Redirect dengan pesan error jika terjadi masalah
             return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());

@@ -5,7 +5,7 @@
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="logo">
                         <a href="/">
-                            <img src="{{ asset($setting->logo ? 'storage/' . $setting->logo : 'eduhome/img/logo/2.png') }}"
+                            <img src="{{ asset($setting->logo ? 'uploads/' . $setting->logo : 'eduhome/img/logo/2.png') }}"
                                 alt="alhikmah" />
                         </a>
                     </div>
@@ -19,7 +19,12 @@
                                     <li><a href="/">Home</a>
                                     </li>
                                     <li><a href="/about">About</a></li>
-                                    <li><a href="#">PMB</a></li>
+                                    <li><a href="#">PSB</a>
+                                        <ul>
+                                            <li><a href="/siswa-baru">PESERTA DIDIK BARU</a></li>
+                                            <li><a href="/siswa-pindahan">PESSERTA PINDAHAN</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="/event">event</a>
                                     <li><a href="/berita">Berita</a>
                                     <li><a href="/tamu">Tamu</a>

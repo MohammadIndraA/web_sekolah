@@ -60,6 +60,13 @@ return [
             'report' => false,
         ],
 
+        'public_local' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'), // Simpan file di public/uploads
+            'url' => env('APP_URL') . '/uploads',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BeritaHomeController;
+use App\Http\Controllers\CalonSiswaController;
 use App\Http\Controllers\DaftarSekolahController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
@@ -48,6 +49,11 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/profile', function(){
         return view('frontend.profile');
     });
+
+    // Calon Siswa
+    Route::get('/siswa-baru', [CalonSiswaController::class, 'index'])->name('siswa-baru');
+    Route::get('/siswa-pindahan', [CalonSiswaController::class, 'index'])->name('siswa-pindahan');
+    Route::post('/siswa-store', [CalonSiswaController::class, 'store'])->name('siswa.store');
     
     // Auth
     Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -127,8 +133,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Berita
     Route::get('/beritas', [BeritaController::class, 'index'])->name('berita.index');
     Route::post('/berita/store', [BeritaController::class, 'store'])->name('berita.store');
-    Route::get('/berita/edit', [BeritaController::class, 'edit'])->name('berita.edit');
-    Route::put('/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
+    Route::get('/berita/show/{slug}', [BeritaController::class, 'show'])->name('berita.show');
+    // Route::get('/berita/edit', [BeritaController::class, 'edit'])->name('berita.show');
+    Route::put('/berita/update/{slug}', [BeritaController::class, 'update'])->name('berita.update');
     Route::delete('/berita/delete', [BeritaController::class, 'destroy'])->name('berita.delete');
 
     // Tag Berita

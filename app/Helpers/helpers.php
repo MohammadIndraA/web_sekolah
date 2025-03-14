@@ -9,7 +9,8 @@ if(! function_exists('upload')) {
         $extensi = $file->getClientOriginalExtension();
         $filename = "{$filename}_" . date('Ymdhis'). ".{$extensi}";
 
-        Storage::disk('public')->putFileAs("/$directory",$file,$filename);
+        // Storage::disk('public')->putFileAs("/$directory",$file,$filename);
+        Storage::disk('public_local')->putFileAs("/$directory", $file, $filename);
         return "/$directory/$filename";
     }
 }
@@ -31,7 +32,7 @@ if(! function_exists('upload')) {
                         $image->getClientOriginalExtension();  
 
             // Store the file  
-            $fullPath = $image->storeAs($path, $filename, 'public');  
+            $fullPath = Storage::disk('public_local')->putFileAs("/$path", $image, $filename);
 
             $uploadedFiles[] = [  
                 'original_name' => $image->getClientOriginalName(),  

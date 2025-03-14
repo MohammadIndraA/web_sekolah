@@ -170,7 +170,7 @@
                     <h5 class="mb-4 text-uppercase">Logo</h5>
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . $setting->logo) }}" alt="Thumbnail" class="img-fluid"
+                            <img src="{{ asset('uploads/' . $setting->logo) }}" alt="Thumbnail" class="img-fluid"
                                 width="200" height="200">
                         </div>
                     </div>

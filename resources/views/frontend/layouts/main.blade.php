@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('eduhome/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('eduhome/css/responsive.css') }}">
     <script src="{{ asset('eduhome/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    @yield('style')
 </head>
 
 <body>

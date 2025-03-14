@@ -116,8 +116,8 @@
             $('#modal-title').text("Tambah Data Sekolah");
             $('#modal-form').modal('show');
             // url action to update
-            let url = `{{ route('kategori-berita.update', 'id') }}`
-            $('#myForm').attr('action', url.replace('id', id));
+            let url = `{{ route('kategori-berita.update', 'ids') }}`
+            $('#myForm').attr('action', url.replace('ids', id));
             $('#myForm').data('type', 'edit');
 
             $.ajax({

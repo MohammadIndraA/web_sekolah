@@ -168,7 +168,7 @@
                         data: 'image',
                         name: 'image',
                         render: function(data, type, row) {
-                            return `<img src="storage/${row.image}" alt="Gambar" width="50" height="50">`;
+                            return `<img src="uploads/${row.image}" alt="Gambar" width="50" height="50">`;
                         }
                     },
                     {
@@ -207,28 +207,32 @@
             $('#modal-title').text("Tambah Data Sekolah");
             $('#modal-form').modal('show');
             $('#id').val('');
+            quill.root.innerHTML = "";
+
         }
 
         // trigger edit modal
-        function editFunc(id) {
+        function editFunc(slug) {
             $('#myForm').trigger("reset");
             $('#myForm').find('.is-invalid').removeClass('is-invalid'); // Remove validation errors
             $('#myForm').find('.invalid-feedback').text(''); // Clear validation error messages
-            $('#modal-title').text("Tambah Data Sekolah");
+            $('#modal-title').text("Edit Data");
             $('#modal-form').modal('show');
             // url action to update
-            let url = `{{ route('berita.update', 'id') }}`
-            $('#myForm').attr('action', url.replace('id', id));
+            let url = `{{ route('berita.update', 'slug') }}`
+            $('#myForm').attr('action', url.replace('slug', slug));
             $('#myForm').data('type', 'edit');
+            console.log(slug);
 
             $.ajax({
                 type: "GET",
-                url: "{{ route('berita.edit') }}",
+                url: `{{ route('berita.show', 'slug') }}`,
                 data: {
-                    id: id
+                    slug: slug
                 },
                 dataType: 'json',
                 success: function(res) {
+                    console.log(res);
                     $('#modal-title').html("Edit Data");
                     $('#modal-form').modal('show');
                     $('#id').val(res.data.id);
@@ -244,7 +248,6 @@
                 },
                 error: function(data) {
                     console.log(data.errors);
-
                     alertNotify('error', data.responseJSON.message);
                 }
             });

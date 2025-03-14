@@ -112,7 +112,7 @@
                         data: 'image',
                         name: 'image',
                         render: function(data, type, row) {
-                            return `<img src="storage/${row.image}" alt="Gambar" width="50" height="50">`;
+                            return `<img src="uploads/${row.image}" alt="Gambar" width="50" height="50">`;
                         }
                     },
                     {
@@ -146,8 +146,8 @@
             $('#modal-title').text("Tambah Data");
             $('#modal-form').modal('show');
             // url action to update
-            let url = `{{ route('banner.update', 'id') }}`
-            $('#myForm').attr('action', url.replace('id', id));
+            let url = `{{ route('banner.update', 'ids') }}`
+            $('#myForm').attr('action', url.replace('ids', id));
             $('#myForm').data('type', 'edit');
 
             $.ajax({
